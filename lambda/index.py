@@ -15,6 +15,8 @@ from ask_sdk_core.handler_input import HandlerInput
 
 from ask_sdk_model import Response
 from alexa import data
+from notion import search
+from notion import helpers
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -32,11 +34,14 @@ class LaunchRequestHandler(AbstractRequestHandler):
 		# type: (HandlerInput) -> Response
 		_ = handler_input.attributes_manager.request_attributes["_"]
 		speak_output = "Hello world"
-		logger.info(handler_input.request_envelope.session.user.access_token)
-
+		logger.info("inLaunchIntentHandler")
+		#logger.info(handler_input.request_envelope.session.user.access_token)
+		response = search.search("",handler_input.request_envelope.session.user.access_token)
+		parentPages = list(map(helpers.getPageName, filter(helpers.isTypeWorkspace,response.get("results"))))
+		logger.info(parentPages)
 		return (
 			handler_input.response_builder
-			.speak(speak_output)
+			.speak(" ".join(parentPages))
 			.ask(speak_output)
 			.response
 		)
