@@ -9,7 +9,7 @@ jobs:
       - name: checkout source code
         uses: actions/checkout@v1
       - name: Build Python Project
-        run: ./build.sh
+        run: ls
       - name: default deploy
         uses: appleboy/lambda-action@master
         with:
