@@ -33,7 +33,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
 	def handle(self, handler_input):
 		# type: (HandlerInput) -> Response
 		_ = handler_input.attributes_manager.request_attributes["_"]
-		speak_output = "Hello world"
+		
 		logger.info("inLaunchIntentHandler")
 		#logger.info(handler_input.request_envelope.session.user.access_token)
 		response = search.search("",handler_input.request_envelope.session.user.access_token)
@@ -41,8 +41,8 @@ class LaunchRequestHandler(AbstractRequestHandler):
 		logger.info(parentPages)
 		return (
 			handler_input.response_builder
-			.speak(" ".join(parentPages))
-			.ask(speak_output)
+			.speak("Hey. Welcome to Notion. Your parent pages are:<break time='0.5s'/>" + "<break time='0.2s'/> ".join(parentPages) + "<break time='0.5s'/>What would you like to do?")
+			.ask("What would you like to do?")
 			.response
 		)
 
