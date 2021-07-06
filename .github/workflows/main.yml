@@ -9,7 +9,7 @@ jobs:
       - name: checkout source code
         uses: actions/checkout@v1
       - name: Build Python Project
-        run: ls
+        run: cd lambda && ./build.sh
       - name: default deploy
         uses: appleboy/lambda-action@master
         with:
@@ -17,7 +17,7 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ${{ secrets.AWS_REGION }}
           function_name: lambda_function
-          zip_file: Notion-Integration-For-Alexa/notion-alexa.zip
+          zip_file: lambda/notion-alexa.zip
           handler: lambda_handler
           role: arn:aws:iam::614810829485:role/service-role/NotionForAlexaTest-role-d115rrbn
           runtime: python3.8
