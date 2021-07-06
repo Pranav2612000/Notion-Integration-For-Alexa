@@ -1,1 +1,3 @@
 **/.envs/**
+**/notion-alexa.zip
+lambda/build/**
