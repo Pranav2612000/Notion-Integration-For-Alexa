@@ -16,7 +16,7 @@ jobs:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ${{ secrets.AWS_REGION }}
-          function_name: lambda_function
+          function_name: NotionForAlexaTest
           zip_file: lambda/notion-alexa.zip
           handler: lambda_handler
           role: arn:aws:iam::614810829485:role/service-role/NotionForAlexaTest-role-d115rrbn
