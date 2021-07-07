@@ -23,8 +23,9 @@ def isType(block,type):
         return False
 
 def getPlainText(block):
+    logger.info(block)
     try:
-        return block.get(block.get("type")).get("text").get("plain_text")
+        return block.get(block.get("type")).get("text")[0].get("plain_text")
     except:
         return "text not found!"
 
