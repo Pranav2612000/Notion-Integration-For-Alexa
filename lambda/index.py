@@ -65,11 +65,10 @@ class listPageDataIntentHandler(AbstractRequestHandler):
 
 		#fetch page content
 		response = retrieveBlockChildren.retrieveBlockChildren(pageId, handler_input.request_envelope.session.user.access_token)
-
+		speak_output = helpers.getDataFromBlockBasedType(type,response.get("results"))
 		return (
 			handler_input.response_builder
-			.speak(speak_output)
-			.ask(speak_output)
+			.speak(" ".join(speak_output))
 			.response
 		)
 
