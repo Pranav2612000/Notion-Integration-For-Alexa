@@ -46,26 +46,20 @@ class LaunchRequestHandler(AbstractRequestHandler):
 			.response
 		)
 
-
-class HelloWorldIntentHandler(AbstractRequestHandler):
-	"""Handler for Hello World Intent."""
-
+class listPageDataIntentHandler(AbstractRequestHandler):
+	"""Handler for listPageData intent"""
 	def can_handle(self, handler_input):
-		# type: (HandlerInput) -> bool
-		return ask_utils.is_intent_name("HelloWorldIntent")(handler_input)
+		return ask_utils.is_intent_name("listPageData")(handler_input)
 
 	def handle(self, handler_input):
-		# type: (HandlerInput) -> Response
-		_ = handler_input.attributes_manager.request_attributes["_"]
-		speak_output = _(data.HELLO_MSG)
+		speak_output = "Test"
 
 		return (
 			handler_input.response_builder
 			.speak(speak_output)
-			# .ask("add a reprompt if you want to keep the session open for the user to respond")
+			.ask(speak_output)
 			.response
 		)
-
 
 class HelpIntentHandler(AbstractRequestHandler):
 	"""Handler for Help Intent."""
@@ -203,7 +197,7 @@ class LocalizationInterceptor(AbstractRequestInterceptor):
 sb = SkillBuilder()
 
 sb.add_request_handler(LaunchRequestHandler())
-sb.add_request_handler(HelloWorldIntentHandler())
+sb.add_request_handler(listPageDataIntentHandler())
 sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(CancelOrStopIntentHandler())
 sb.add_request_handler(FallbackIntentHandler())
