@@ -53,7 +53,7 @@ def getPageIdfromPageName(pageName, accessToken):
         # Assumption: there exists only 1 page with a name
         logger.info(response)
 
-        if(len(response.get("results"))):
+        if(len(response.get("results")) == 0):
             return "Page not found"
         page = response.get("results")[0]
         return page.get("id")
