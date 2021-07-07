@@ -1,4 +1,5 @@
 import logging
+import search
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
@@ -16,3 +17,16 @@ def getPageName(page):
             return page.get("title")[0].get("text").get("content")
     except :
         logger.error("Page not available")
+
+def getPageIdfromPageName(pageName, accessToken):
+    try:
+        response = search(pageName, accessToken)
+        # Assumption: there exists only 1 page with a name
+
+        if(len(response.get("results"))):
+            return "Page not found"
+        page = response.get("results")[0]
+        return page.get("id")
+    except: 
+        logger.error("Page not available")
+        return "Page not found"
