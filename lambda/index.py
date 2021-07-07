@@ -58,9 +58,11 @@ class listPageDataIntentHandler(AbstractRequestHandler):
 		# get slot values
 		pageName = ask_utils.get_slot_value(handler_input=handler_input, slot_name = "page")
 		type = ask_utils.get_slot_value(handler_input=handler_input, slot_name = "type")
+		logger.info(pageName)
+		logger.info(type)
 
 		#fetch id from pageName
-		pageId = helpers.getPageIdfromPageName(pageName)
+		pageId = helpers.getPageIdfromPageName(pageName, handler_input.request_envelope.session.user.access_token)
 		logger.info(pageId)
 
 		#fetch page content
