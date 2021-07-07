@@ -1,4 +1,3 @@
-from lambda.constants import TYPE
 import logging
 from typing import List
 import os
