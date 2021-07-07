@@ -5,6 +5,8 @@ NOTION_RETRIEVE_BLOCK_CHILDREN_URL="https://api.notion.com/v1/blocks/<blockId>/c
 
 TYPE = {
     "todo" : "to_do",
+    "to-do" : "to_do",
+    "to do" : "to_do",
     "paragraph" : "paragraph",
     "heading" : "heading_1",
     "subheading" : "heading_2",
