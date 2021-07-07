@@ -39,12 +39,14 @@ def getPageName(page):
         logger.error("Page not available")
 
 def getDataFromBlockBasedType(type,blocks):
+    logger.info(blocks)
     try:
         typeObjects = list(map(getPlainText, filter(lambda block: isType(block,type), blocks)))
         return typeObjects
     except:
         logger.error("block not found")
         return list("Data could not be extracted")
+
 def getPageIdfromPageName(pageName, accessToken):
     try:
         response = search(pageName, accessToken)
