@@ -49,7 +49,7 @@ def getDataFromBlockBasedType(type,blocks):
 
 def getPageIdfromPageName(pageName, accessToken):
     try:
-        response = search(pageName, accessToken)
+        response = search.search(pageName, accessToken)
         # Assumption: there exists only 1 page with a name
         logger.info(response)
 
