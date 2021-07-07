@@ -70,7 +70,7 @@ class listPageDataIntentHandler(AbstractRequestHandler):
 		speak_output = helpers.getDataFromBlockBasedType(type,response.get("results"))
 		return (
 			handler_input.response_builder
-			.speak(" ".join(speak_output))
+			.speak(" <break time='0.5s'/>".join(speak_output))
 			.response
 		)
 
