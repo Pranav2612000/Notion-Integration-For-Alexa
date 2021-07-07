@@ -1,10 +1,10 @@
 import logging
 from typing import List
 import os
-import search
 import sys
 sys.path.append("./")
 import constants
+from notion import search
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
