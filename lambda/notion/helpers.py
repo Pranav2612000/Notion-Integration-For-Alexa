@@ -2,6 +2,7 @@ from lambda.constants import TYPE
 import logging
 from typing import List
 import os
+import search
 import sys
 sys.path.append("./")
 import constants
@@ -45,3 +46,15 @@ def getDataFromBlockBasedType(type,blocks):
     except:
         logger.error("block not found")
         return list("Data could not be extracted")
+def getPageIdfromPageName(pageName, accessToken):
+    try:
+        response = search(pageName, accessToken)
+        # Assumption: there exists only 1 page with a name
+
+        if(len(response.get("results"))):
+            return "Page not found"
+        page = response.get("results")[0]
+        return page.get("id")
+    except: 
+        logger.error("Page not available")
+        return "Page not found"
