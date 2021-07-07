@@ -16,6 +16,7 @@ from ask_sdk_core.handler_input import HandlerInput
 from ask_sdk_model import Response
 from alexa import data
 from notion import search
+from notion import retrieveBlockChildren
 from notion import helpers
 
 logger = logging.getLogger(__name__)
@@ -53,6 +54,17 @@ class listPageDataIntentHandler(AbstractRequestHandler):
 
 	def handle(self, handler_input):
 		speak_output = "Test"
+
+		# get slot values
+		pageName = ask_utils.get_slot_value(handler_input=handler_input, slot_name = "page")
+		type = ask_utils.get_slot_value(handler_input=handler_input, slot_name = "type")
+
+		#fetch id from pageName
+		pageId = helpers.getPageIdfromPageName(pageName)
+		logger.info(pageId)
+
+		#fetch page content
+		response = retrieveBlockChildren.retrieveBlockChildren(pageId, handler_input.request_envelope.session.user.access_token)
 
 		return (
 			handler_input.response_builder
